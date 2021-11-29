@@ -29,9 +29,8 @@
  *@copyright  MIT License
  *@brief      This file will instantiate walker class and run the node.
  */
-#include "../include/Walker.hpp"
 #include <ros/ros.h>
-
+#include "../include/Walker.hpp"
 int main(int argc, char** argv) {
     ros::init(argc, argv, "walker");
     ros::NodeHandle node;

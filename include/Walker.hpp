@@ -29,6 +29,8 @@
  *@copyright  MIT License
  *@brief      Header file for Walker class.
  */
+#ifndef INCLUDE_TURTLEBOT_WALKER_HPP_
+#define INCLUDE_TURTLEBOT_WALKER_HPP_
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <sensor_msgs/LaserScan.h>
@@ -50,3 +52,4 @@ class Walker {
      // Variable to store distance.
      double distance;
 };
+#endif  //   INCLUDE_TURTLEBOT_WALKER_HPP_
