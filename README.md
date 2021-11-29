@@ -16,8 +16,8 @@ The following dependencies are required to run this package:
 
 1. ROS noetic
 2. catkin 
-3. Ubuntu 20.04 For installing ROS (http://wiki.ros.org/noetic)
-4. turtlebot3_simulation packages (https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
+3. [Ubuntu 20.04 For installing ROS](http://wiki.ros.org/noetic)
+4. [turtlebot3_simulation packages](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 
 
 ## Standard install via command-line
@@ -66,7 +66,7 @@ rosbag info roomba.bag
 roscore
 ```
 
-2. Terminal 2 (play rosbag):
+2. Terminal 2 ([play rosbag](https://drive.google.com/file/d/14nKEnZNMQerkhuANQ8l0ABdd5cKx7ffr/view?usp=sharing)):
 ```
 cd catkin_ws
 source devel/setup.bash
