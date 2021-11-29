@@ -37,8 +37,8 @@
 #include "geometry_msgs/Twist.h"
 
 void Walker::callback(const sensor_msgs::LaserScan::ConstPtr& data) {
-    double minDistance = 0.2;
-    for (int i = 0; i < data->ranges.size(); i++) {
+    double minDistance = 0.20;
+    for (int i = 0; i < 5; i++) {
         if (data->ranges[i] > minDistance) {
             minDistance = data->ranges[i];
         }
@@ -50,12 +50,11 @@ Walker::Walker(ros::NodeHandle node) {
     // ROS LaserScan Subscriber
     ros::Subscriber laserSubscriber =
 node.subscribe("/scan", 1000, &Walker::callback, this);
+ros::Publisher velocityPublisher =
+    node.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
+   
 
-    // ROS Publisher
-    ros::Publisher velocityPublisher =
-node.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
-
-    ros::Rate loopRate(4);
+    ros::Rate loopRate(3);
     while (ros::ok()) {
         // Declare and initialize twist
         geometry_msgs::Twist twist;
@@ -66,13 +65,23 @@ node.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
         twist.angular.y = 0.0;
         twist.angular.z = 0.0;
 
-        if (distance < 0.55) {
-            ROS_INFO_STREAM("Rotating");
-            twist.linear.x = 0.0 ;
-            twist.angular.z = 0.22;
+        if (distance > 0.45 ) {
+            ROS_INFO_STREAM("Going Forward");
+            twist.linear.x = 0.10;
+            twist.linear.y = 0.0;
+            twist.linear.z = 0.0;
+            twist.angular.x = 0.0;
+            twist.angular.y = 0.0;
+            twist.angular.z = 0.0;
+            
         } else {
-            ROS_INFO_STREAM("Go Forward!");
-            twist.linear.x = 0.07;
+            ROS_INFO_STREAM("Obstacle Detected, Rotating");
+            twist.linear.x = 0.0;
+            twist.linear.y = 0.0;
+            twist.linear.z = 0.0;
+            twist.angular.x = 0.0;
+            twist.angular.y = 0.0;
+            twist.angular.z = 1.0;
         }
         velocityPublisher.publish(twist);
         ros::spinOnce();
