@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>roomba</name>
+  <name>turtlebot_walker</name>
   <version>0.1.0</version>
-  <description>roomba package</description>
+  <description>turtlebot_walker package</description>
   <maintainer email="rkaranam@umd.edu">Rahul Karanam</maintainer>
   <license>MIT</license>
 
