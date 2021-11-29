@@ -3,9 +3,9 @@
     <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"></include>
 
     <node
-        pkg="roomba"
+        pkg="turtlebot_walker"
         type="walker"
-        name="walker"
+        name="turtlebot_walker"
         launch-prefix="xterm -e"
     />
 
@@ -13,7 +13,7 @@
         pkg="rosbag"
         name="record"
         type="record"
-        args="-a -O $(find roomba)/results/roomba.bag -x /camera/(.*)" 
+        args="-a -O $(find turtlebot_walker)/results/roomba.bag -x /camera/(.*)" 
         if="$(arg record)"
     />
 </launch>
