@@ -1,0 +1,19 @@
+<launch>
+    <arg name="record" default="false"/>
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"></include>
+
+    <node
+        pkg="turtlebot_walker"
+        type="walker"
+        name="turtlebot_walker"
+        launch-prefix="xterm -e"
+    />
+
+    <node 
+        pkg="rosbag"
+        name="record"
+        type="record"
+        args="-a -O $(find turtlebot_walker)/results/roomba.bag -x /camera/(.*)" 
+        if="$(arg record)"
+    />
+</launch>
