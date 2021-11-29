@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(roomba)
+project(turtlebot_walker)
 
 
 add_compile_options(-std=c++11)
